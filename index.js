@@ -14,7 +14,7 @@ functions.cloudEvent("sendVerificationEmail", (cloudEvent) => {
   const DOMAIN = "jasonlidevelop.me";
   const mg = mailgun({ apiKey: process.env["API_KEY"], domain: DOMAIN });
 
-  const verificationLink = `http://api.development.com/verify?id=${userId}&code=${verifyCode}`;
+  const verificationLink = `http://api.jasonlidevelop.com/api/v1/user/verify?id=${userId}&code=${verifyCode}`;
 
   const data = {
     from: `Excited User <mailgun@${DOMAIN}>`,
