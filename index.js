@@ -11,10 +11,10 @@ functions.cloudEvent("sendVerificationEmail", (cloudEvent) => {
   const verifyCode = messageData.data.verifyCode;
   console.log(userEmail, userId, verifyCode);
 
-  const DOMAIN = "jasonlidevelop.com";
+  const DOMAIN = process.env["DOMAIN"];
   const mg = mailgun({ apiKey: process.env["API_KEY"], domain: DOMAIN });
 
-  const verificationLink = `https://api.jasonlidevelop.com/api/v1/user/verify?id=${userId}&code=${verifyCode}`;
+  const verificationLink = `${process.env["API_ADDRESS"]}?id=${userId}&code=${verifyCode}`;
 
   const data = {
     from: `Excited User <mailgun@${DOMAIN}>`,
